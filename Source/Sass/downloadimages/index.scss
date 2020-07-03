@@ -1,0 +1,58 @@
+@import '../globals/declarations.scss';
+
+@import '../globals/globals.scss';
+
+@import '../shared/app.scss';
+
+@import '../shared/sidebar.scss';
+
+@import '../shared/content.scss';
+
+@import '../shared/login.scss';
+
+@import '../shared/inputAnimation.scss';
+
+@import '../shared/notifications.scss';
+
+@import '../shared/nodata.scss';
+
+@import '../shared/paging.scss';
+
+@import '../shared/globalErrors.scss';
+
+@import './downloadimages.scss';
+
+@import './favouritesImages.scss';
+
+html,
+body,
+#app {
+  min-width: 320px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#app {
+  .loading-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 1;
+    background: transparent;
+  }
+
+  .loading-animation:after {
+    content: '';
+    width: 40%;
+    height: 4px;
+    background: linear-gradient(to right, $white 0%, $new-dark 30%, $new-dark 70%, $white 100%);
+    display: block;
+    position: absolute;
+    top: 0;
+    animation: animateLoadingChatDiv 1500ms linear infinite;
+  }
+}

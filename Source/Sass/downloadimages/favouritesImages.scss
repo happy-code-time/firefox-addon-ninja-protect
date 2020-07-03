@@ -1,0 +1,257 @@
+@import '../globals/declarations.scss';
+
+.FavouritesImages {
+
+  h1 {
+    padding: 0 20px;
+  }
+
+  .paging {
+    @media screen and (min-width: 1024px) {
+      display: block;
+    }
+
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fafb;
+    min-height: 60px;
+    box-sizing: border-box;
+    padding: 4.5px 10px;
+    border-bottom: 1px solid #dadce0;
+    margin-left: 1px;
+
+    .buttons {
+      float: left;
+      margin:8px 0;
+    }
+
+    .prev-button,
+    .next-button {
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      font-size: 0.75rem;
+      margin: 0 10px;
+      border-radius: 3px;
+      background-color: rgba(69, 69, 69, 0.1);
+      color: #72777a;
+    }
+
+    .prev-button:hover,
+    .next-button:hover {
+      cursor: pointer;
+    }
+
+    .prev-button.deactivated,
+    .next-button.deactivated {
+      color: rgba(69, 69, 69, 0.2);
+    }
+
+    .actions {
+      float: right;
+
+      .button-action {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 0.75rem;
+        margin: 0 14px;
+        border-radius: 3px;
+        background-color: transparent;
+        font-size: 1.47rem;
+        color: #72777a;
+        text-decoration: none;
+      }
+
+      span {
+        font-size: 0.87rem;
+        color: #72777a;
+        display: inline-block;
+        margin-left: -10px;
+      }
+
+      .archive-icon {
+
+        @media screen and (min-width: 1024px) {
+          margin: 0 14px;
+        }
+
+        margin-left: 0px;
+        color: goldenrod;
+      }
+
+      .trash {
+        color: $red;
+      }
+
+      .button-action:hover {
+        cursor: pointer;
+      }
+    }
+
+    .filters{
+      display: inline-block;
+      font-size: 0.87rem;
+      color: #72777a;
+
+      span {
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .select-style {
+        border: 1px solid #ccc;
+        width: 200px;
+        border-radius: 5px;
+        overflow: hidden;
+        background: #fafafa transparent no-repeat 90% 50%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 0.87rem;
+        color: #72777a;
+        margin-left: 10px;
+      }
+        
+      .select-style select {
+        padding: 5px 8px;
+        width: 130%;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        background-image: none;
+        -webkit-appearance: none;
+      }
+        
+      .select-style select:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .NoDataImages {
+    h1 {
+      text-align: center;
+    }
+  }
+
+  h2 {
+    margin: 20px 0;
+    font-size: 0.87rem;
+  }
+
+  /* if an tab has been clicked, then display left and right site */
+  .images {
+    box-sizing: border-box;
+    padding: 0 20px;
+    max-width: 1620px;
+    margin:0 auto;
+
+    .image-box {
+      width: calc(100% - 40px);
+      height: 418px;
+      margin: 20px;
+      display: inline-block;
+      border-radius: 5px;
+      border: 1px solid $border_color;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      transition-duration: $default_transition;
+
+      .remove {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: rgb(39, 39, 39);
+        font-size: 1.17rem;
+      }
+
+      .remove:hover {
+        color: $red;
+        cursor: pointer;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        margin: 30px auto;
+        border-radius: 5px;
+        max-height: 200px;
+      }
+
+      .text {
+        box-sizing: border-box;
+        padding: 10px;
+        line-height: 30px;
+        height: 100px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: absolute;
+        bottom: 90px;
+        left: 0;
+        width: 100%;
+      }
+
+      .type {
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        height: 40px;
+        width: 100%;
+        background-color: $red;
+        color: $white;
+        text-align: center;
+        line-height: 40px;
+      }
+
+      .options {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 50px;
+        width: 100%;
+        background-color: $dodgerblue;
+
+        i,
+        a {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          color: $white;
+          text-decoration: none;
+          font-size: 1.2rem;
+          margin: 10px;
+        }
+
+        i:hover,
+        a:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    @media screen and (min-width: $media-break){
+      .image-box {
+        width: calc(50% - 50px);
+      }
+    }
+
+    @media screen and (min-width: 1400px){
+      .image-box {
+        width: calc(33% - 40px);
+      }
+    }
+
+    @media screen and (min-width: 1600px){
+      .image-box {
+        width: calc(24% - 35px);
+      }
+    }
+  }
+}

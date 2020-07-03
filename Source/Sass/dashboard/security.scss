@@ -1,0 +1,148 @@
+@import '../globals/declarations.scss';
+
+.Security {
+  max-width: 1024px;
+  margin: 0 auto;
+
+  .single-box {
+    margin: 20px 10px;
+    border-radius: 5px;
+    border: 1px solid $border-color;
+    transition-duration: $default_transition;
+    box-shadow: 0px 0px 3px transparent;
+    text-decoration: none;
+    overflow: hidden;
+    padding: 0px;
+
+    h1 {
+      box-sizing: border-box;
+      padding: 0px 20px;
+      font-size: 1.17rem;
+      color: #72777a;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 100%;
+      background-color: rgb(0,0,0);
+      transition-duration: $default_transition;
+      background-image: url("https://chat-manager.j.pl/public/images/notes-1209639_1920.jpg");
+    }
+  }
+
+  .single-box-0 {
+    width: calc(50% - 60px);
+    height: 300px;
+  }
+
+  .single-box-0,
+  .single-box-1,
+  .single-box-2,
+  .single-box-3,
+  .single-box-4,
+  .single-box-5,
+  .single-box-6,
+  .single-box-7,
+  .single-box-8,
+  .single-box-9,
+  .single-box-10,
+  .single-box-11{
+    width: calc(100% - 20px);
+    height: 300px;
+    display: inline-block;
+    float: none;
+  }
+
+  .single-box:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 3px rgba(69, 69, 69, 0.4);
+  }
+
+  @media screen and (min-width: $media-break){
+    .single-box-0,
+    .single-box-1,
+    .single-box-2,
+    .single-box-3,
+    .single-box-4,
+    .single-box-5,
+    .single-box-6,
+    .single-box-7,
+    .single-box-8,
+    .single-box-9,
+    .single-box-10,
+    .single-box-11{
+      width: calc(50% - 20px);
+      height:300px;
+    }
+  }
+
+  @media screen and (min-width: 1140px){
+    .single-box-0,
+    .single-box-1,
+    .single-box-2,
+    .single-box-3,
+    .single-box-4,
+    .single-box-5,
+    .single-box-6,
+    .single-box-7,
+    .single-box-8,
+    .single-box-9,
+    .single-box-10,
+    .single-box-11{
+      display: block;
+      float: left;
+    }
+
+    .single-box-0 {
+      width: calc(50% - 60px);
+      height: 500px;
+    }
+  
+    .single-box-1,
+    .single-box-2 {
+      width: 25%;
+      height: 225px;
+    }
+  
+    .single-box-3 {
+      width: calc(60% - 83px);
+      height: 255px;
+      margin-top:0px;
+    }
+  
+    .single-box-4,
+    .single-box-6 {
+      width: calc(50% - 60px);
+      height: 225px;
+    }
+  
+    .single-box-5 {
+      width: calc(60% - 83px);
+      height: 225px;
+    }
+  
+    .single-box-6 {
+      height: 500px;
+    }
+  
+    .single-box-7,
+    .single-box-8,
+    .single-box-9,
+    .single-box-10{
+      width: calc(50% - 20px);
+      height: 225px;
+    }
+
+    .single-box-6,
+    .single-box-11{
+      width: calc(100% - 20px);
+      height: 350px;
+    }
+  }
+}

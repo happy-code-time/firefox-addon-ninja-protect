@@ -1,0 +1,223 @@
+@import '../globals/declarations.scss';
+
+.SecuritySettings {
+
+  .error-message {
+    box-sizing: border-box;
+    padding: 0px 10px;
+    height: auto;
+    overflow: auto;
+    line-height: 30px;
+    font-size: 0.87rem;
+    background-color: $red-light-xl;
+    color: rgba(0, 0, 0, 0.77);
+    animation: opacity $default_transition linear ease-in;
+    margin: 10px;
+    border-radius: 5px;
+
+    i {
+      font-size: inherit;
+      color: inherit;
+      margin: 0 10px 0 5px;
+    }
+  }
+
+  .successMessages-message {
+    box-sizing: border-box;
+    padding: 0px 10px;
+    height: auto;
+    overflow: auto;
+    line-height: 30px;
+    font-size: 0.87rem;
+    background-color: $green-light-xl;
+    color: rgba(0, 0, 0, 0.77);
+    animation: opacity $default_transition linear ease-in;
+    margin: 10px;
+    border-radius: 5px;
+
+    i {
+      font-size: inherit;
+      color: inherit;
+      margin: 0 10px 0 5px;
+    }
+  }
+
+  .actions-header{
+    background-color: #f9fafb;
+    display: block;
+    min-height: 50px;
+    box-sizing: border-box;
+    padding: 10px;
+    height: 60px;
+    margin:0 10px;
+    border-radius: 5px;
+  
+    .actions{
+      float: right;
+          
+      .button-action {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 0.75rem;
+        margin: 0 14px;
+        border-radius: 3px;
+        background-color: transparent;
+        font-size: 1.47rem;
+        color: #72777a;
+      }
+  
+      .clipboard{
+        color: $dodgerblue-light;
+      }
+  
+      .json{
+        color: $green-light;
+      }
+
+      .delete-all{
+        color: $red-light;
+      }
+  
+      .button-action:hover{
+        cursor: pointer;
+      }
+    }
+  }
+
+  .ul-description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 30px;
+    line-height: 25px;
+    text-align: left;
+    border-bottom: 1px solid rgba(69, 69, 69, .1);
+    margin:0;
+
+    li {
+      box-sizing: border-box;
+      padding: 15px 10px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.823rem;
+      background-color: rgba(255, 255, 255, .95);
+      color: #72777a;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      .switch {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      /* Hide the browser's default checkbox */
+      .switch input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      /* Create a custom checkbox */
+      .switch-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        margin-left: 50px;
+        border-radius: 50%;
+        transition-duration: $default_transition;
+      }
+
+      .switch-slider-not-checked:before {
+        content: "\00d7";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: $red-light;
+        color: rgb(255, 255, 255);
+        font-size: 19px;
+        font-weight: bold;
+        transition-duration: $default_transition;
+      }
+
+      /* On mouse-over, add a grey background color */
+      .switch:hover input~.switch-slider {
+        background-color: rgba(69, 69, 69, .3);
+      }
+
+      /* When the checkbox is checked, add a blue background */
+      .switch input:checked~.switch-slider {
+        background-color: $green-light;
+      }
+
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .switch-slider:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      /* Show the checkmark when checked */
+      .switch input:checked~.switch-slider:after {
+        display: block;
+      }
+
+      /* Style the checkmark/indicator */
+      .switch .switch-slider:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      input[type=text],
+      input[type=number] {
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+
+    li:first-child {
+      width: 170px;
+    }
+
+    li:last-child {
+      width: calc(100% - 170px);
+    }
+
+    a{
+      text-decoration: none;
+      font-size: 0.823rem;
+      color: $dodgerblue;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      letter-spacing: 0.122rem;
+    }
+  }
+}

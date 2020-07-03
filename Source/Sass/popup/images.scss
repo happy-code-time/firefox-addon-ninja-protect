@@ -1,0 +1,23 @@
+@import '../globals/declarations.scss';
+
+.Images{
+  overflow: hidden;
+  background-image: url('https://chat-manager.j.pl/public/images/low-poly-3305284_1920.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+
+  h1{
+    font-size: 33px !important;
+    margin: 50px 0;   
+    color: $white !important;
+  }
+
+  .images-count{
+    line-height: 150px;
+    font-size: 43px !important;
+    animation: scaleIt 500ms linear infinite;
+    color: $red;
+    font-weight: bold;
+  }
+}

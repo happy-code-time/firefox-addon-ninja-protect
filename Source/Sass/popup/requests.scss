@@ -1,0 +1,89 @@
+@import '../globals/declarations.scss';
+
+.Requests{
+  padding: 0;
+  margin: 0;
+  position: relative;
+
+  .count{
+    position: absolute;
+    top:20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $red;
+    color: $white;
+    font-size: 0.87rem;
+    text-align: center;
+    line-height: 40px;
+  }
+
+  .domain-url{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 40px;
+    white-space: nowrap;
+    word-break: none;
+    word-wrap: none;
+    font-size: 0.87rem;
+    color: rgb(19, 19, 19);
+    line-height: 20px;
+  }
+
+
+  .ul-description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 30px;
+    line-height: 25px;
+    text-align: left;
+    border-bottom: 1px solid rgba(69, 69, 69, .1);
+    margin:0;
+    padding:0;
+
+    li {
+      box-sizing: border-box;
+      padding: 15px 10px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.923rem;
+      background-color: rgba(255, 255, 255, .95);
+      color: #72777a;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      i{
+        color: rgba(0, 0, 0, 0.77);
+        display: block;
+        width: 50px;
+        text-align: center;
+      }
+
+      .fa-thumbs-up{
+        color: $green;
+      }
+
+      .fa-thumbs-down{
+        color: $red;
+      }
+
+      i:hover{
+        cursor: pointer;
+      }
+    }
+
+    li:first-child {
+      width: 50px;
+    }
+
+    li:last-child {
+      width: calc(100% - 70px);
+    }
+  }
+}

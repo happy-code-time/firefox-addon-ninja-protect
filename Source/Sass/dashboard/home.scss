@@ -1,0 +1,10 @@
+@import '../globals/declarations';
+
+*::selection {
+  background-color: $new-dark;
+  color: $new-orange;
+}
+
+.Home {
+  position: relative;
+}

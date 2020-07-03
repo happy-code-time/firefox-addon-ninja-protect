@@ -1,0 +1,81 @@
+* { 
+    cursor: none !important;
+}
+
+:root {
+    position: relative;
+}
+
+:root:after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 99vW;
+    min-height: 100vH;
+    z-index: 1;
+}
+
+*:hover > *:hover > *:hover {
+    box-shadow: 4px 4px 5px #F44559 !important;
+}
+
+
+#ninja-block-html-element-is-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 30px;
+    line-height: 30px;
+    background: #171d22;
+    z-index: 9999999999;
+    transition-duration: 300ms;
+}
+
+#ninja-block-html-element-is-active:hover {
+    width: 0%;
+}
+
+#ninja-block-html-element-is-active p {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-family: 'Roboto';
+    margin: 10px;
+}
+
+#ninja-cursor-lines-x {
+    height: 0;
+    width: 0;
+    top: 0;
+    position: fixed;
+    overflow: visible;
+    z-index: 99999999999999999999999;
+}
+
+#ninja-cursor-lines-x:after {
+    content: "";
+    width: 1px;
+    height: 100vH;
+    position: absolute;
+    top: 0;
+    background: #F44559;
+}
+
+#ninja-cursor-lines-y {
+    height: 0;
+    width: 0;
+    left: 0;
+    position: fixed;
+    overflow: visible;
+    z-index: 99999999999999999999999;
+}
+
+#ninja-cursor-lines-y:after {
+    content: "";
+    height: 1px;
+    width: 100vW;
+    left: 0;
+    position: absolute;
+    background: #F44559;
+}
