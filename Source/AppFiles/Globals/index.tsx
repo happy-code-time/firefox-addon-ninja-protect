@@ -1,4 +1,4 @@
-const version = '4.7.0';
+const version = '4.8.0';
 
 const appName = 'NinjaProtect';
 

@@ -1,6 +1,6 @@
 {
   "name": "ninjaprotect",
-  "version": "4.7.0",
+  "version": "4.8.0",
   "description": "NinjaProtect",
   "scripts": {
     "compile": "./node_modules/.bin/gulp compile",

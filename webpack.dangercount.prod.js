@@ -5,7 +5,7 @@ const ENTRY_DASHBOARD = {
     out: path.resolve(__dirname, './Distribution/DangerCount/')
 };
 
-const version = '4.7.0';
+const version = '4.8.0';
 
 const config = {
     mode: 'production',
@@ -18,7 +18,7 @@ const config = {
         filename: 'production.ninja.protection.v'+version+'.js',
     },
     cache: false,
-    devtool: 'inline-source-map',
+    devtool: false,
     module: {
         rules: [
             {
