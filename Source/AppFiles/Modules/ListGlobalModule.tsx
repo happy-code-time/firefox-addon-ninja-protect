@@ -30,6 +30,10 @@ import emptyStorage from '../Functions/storage/emptyStorage';
 
 import addToStore from '../../Store/addToStore';
 
+import getSecurityList from '../../AppFiles/Functions/getSecurityList';
+
+import customKey from '../Functions/customKey';
+
 interface ListGlobalModuleProps {
     storageName: string;
 }
@@ -48,8 +52,12 @@ class ListGlobalModule extends React.Component<ListGlobalModuleProps> {
     };
 
     public storageName: string;
+
     public listReadable: string;
+
     public storageKey: string;
+
+    public example: any;
 
     constructor(props) {
         super(props);
@@ -75,6 +83,7 @@ class ListGlobalModule extends React.Component<ListGlobalModuleProps> {
         this.storageName = this.props.storageName;
         this.listReadable = this.translations[this.storageName];
         this.storageKey = 'BLACKLIST';
+        this.example = getSecurityList();
     }
 
     componentDidMount() {
@@ -306,9 +315,9 @@ class ListGlobalModule extends React.Component<ListGlobalModuleProps> {
             if (this.state.jsonData) {
                 try {
                     var blob = new Blob([JSON.stringify(this.state.jsonData)], { type: "application/json;charset=utf-8" });
-                    FileSaver.saveAs(blob, `NinjaProtect-${self.storageName}.json`);
+                    FileSaver.saveAs(blob, `ProtectorNinja-${self.storageName}.json`);
                 } catch (error) {
-                    addToStore(`Error while creating Blob file. Error message: ${error}.` ,-1);
+                    addToStore(`Error while creating Blob file. Error message: ${error}.`, -1);
                 }
             }
         }, 300);
@@ -333,13 +342,6 @@ class ListGlobalModule extends React.Component<ListGlobalModuleProps> {
                     }
                 </h1>
                 <div className="actions">
-                    <Link
-                        title={this.translations.example}
-                        to='security-examples'
-                        className="button-action"
-                    >
-                        <i className="far fa-question-circle example-link"></i>
-                    </Link>
                     <i
                         title='Export your custom list to json file'
                         onClick={(e) => { this.saveToFileJson(e) }}
@@ -356,6 +358,30 @@ class ListGlobalModule extends React.Component<ListGlobalModuleProps> {
                         onClick={(e) => { this.deleteAll() }}
                         className="far fa-trash-alt button-action delete-all"
                     ></i>
+                </div>
+                <div className="Examples flex flex-column">
+                    {
+                        this.example.map(obj => {
+                            const { translated, img, name } = obj;
+
+                            if (name == this.storageName) {
+                                const jsx = this.translations[`${name}_html`];
+
+                                return (
+                                    <div key={customKey()} className="example">
+                                        <h1 className="ff-title h1 text-center">
+                                            {
+                                                translated
+                                            }
+                                        </h1>
+                                        {
+                                            jsx
+                                        }
+                                    </div>
+                                )
+                            }
+                        })
+                    }
                 </div>
                 <h1 className="h1 ff-title">
                     {

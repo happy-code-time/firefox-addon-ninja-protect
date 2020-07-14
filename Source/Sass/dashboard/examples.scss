@@ -12,14 +12,13 @@
   }
 
   .example{
-    margin-top: 20px;
     box-sizing: border-box;
-    padding: 0 5% 35px 5%;
+    padding: 20px;
     border-bottom: 1px solid $border_color;
 
     .box-content{
       display: block;
-      margin-top: 40px;
+      margin-top: 20px;
     }
 
     ul{

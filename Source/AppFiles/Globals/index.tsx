@@ -1,8 +1,8 @@
-const version = '4.8.0';
+const version = '4.8.1';
 
-const appName = 'NinjaProtect';
+const appName = 'Protector Ninja';
 
-const appNameShort = 'NinjaProtect';
+const appNameShort = 'Protector Ninja';
 
 export {
     version,

@@ -32,20 +32,18 @@ class AppIcon extends React.Component {
     render(): JSX.Element {
         return (
             <div className="ContentBody ContentStaticHeight">
-                <div className="h1-box">
-                    <h1>
-                        {
-                            this.translations.ninjaIcon
-                        }
-                    </h1>
-                    <a
-                        className="dashboard-link"
-                        target='_blank'
-                        href='http://www.icons-land.com'
-                    >
-                        http://www.icons-land.com
-                    </a>
-                </div>
+                <h1 className="ff-title text-center">
+                    {
+                        this.translations.ninjaIcon
+                    }
+                </h1>
+                <a
+                    className="dashboard-link"
+                    target='_blank'
+                    href='http://www.icons-land.com'
+                >
+                    http://www.icons-land.com
+                </a>
             </div>
         );
     }

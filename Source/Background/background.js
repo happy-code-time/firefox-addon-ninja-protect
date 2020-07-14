@@ -1,8 +1,8 @@
-const HEARD = '🔰';
+const HEARD = '💛';
 
-const EXTENSIONS_NOT_AVAILABLE = '🔰';
+const EXTENSIONS_NOT_AVAILABLE = '💤';
 
-const EXTENSIONS_OFF = '📛';
+const EXTENSIONS_OFF = '💤';
 
 /**
  * Geet item from the local storage
@@ -222,11 +222,11 @@ let GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE = [
   'cometcursors.net',
   'commission-junction.com',
   'commission-junction.net',
-  'connect.facebook.net',
-  'connect.facebook.net/de_DE/all.js',
-  'connect.facebook.net/en_EN/all.js',
-  'connect.facebook.net/en_US/all.js',
-  'connect.facebook.net/pl_PL/all.js',
+  // 'connect.facebook.net',
+  // 'connect.facebook.net/de_DE/all.js',
+  // 'connect.facebook.net/en_EN/all.js',
+  // 'connect.facebook.net/en_US/all.js',
+  // 'connect.facebook.net/pl_PL/all.js',
   'coolweb.com',
   'coolweb.net',
   'coolwebsearch.com',
@@ -8248,16 +8248,8 @@ let DEFAULT_COOKIE_BLACKLIST = [
   // google tracking
   '_ga',
   '__ga',
-  '_gat',
-  '__gat',
-
-  // google tracking input search
-  'CGIC',
-  'DV',
-
   // mozilla.org
   'dwf_sg_task_completion',
-
   // domains,
   '.100hot.com',
   '.207.net',
@@ -8950,9 +8942,6 @@ const GLOBAL_BLACKLIST_URL_INCLUDES = [
    * In testing
    */
   'https://www.youtube.com/ptracking?html5=',
-  'https://www.youtube.com/pagead/conversion/?ai=',
-  'https://www.youtube.com/youtubei/v1/log_event?',
-
 
   // GLOBAL_BLACKLIST_IFRAME_SOURCES
   'https://vars.hotjar.com/box-',
@@ -36665,10 +36654,10 @@ const updateToolbar = () => {
       }
 
       if (-1 === url.indexOf('http')) {
-        // @ts-ignore
-        // browser.browserAction.setBadgeBackgroundColor({ tabId: id, color: 'rgb(69,69,69)' });
-        // @ts-ignore
-        // browser.browserAction.setBadgeText({ tabId: id, text: EXTENSIONS_NOT_AVAILABLE });
+        //@ts-ignore
+        browser.browserAction.setBadgeBackgroundColor({ tabId: id, color: 'rgb(69,69,69)' });
+        //@ts-ignore
+        browser.browserAction.setBadgeText({ tabId: id, text: EXTENSIONS_NOT_AVAILABLE });
 
         return;
       }
@@ -36802,10 +36791,9 @@ const updateToolbar = () => {
     .catch(error => {
       if (-1 === url.indexOf('http')) {
         // @ts-ignore
-        // browser.browserAction.setBadgeBackgroundColor({ tabId: id, color: 'rgb(69,69,69)' });
+        browser.browserAction.setBadgeBackgroundColor({ tabId: id, color: 'rgb(69,69,69)' });
         // @ts-ignore
-        // browser.browserAction.setBadgeText({ tabId: id, text: EXTENSIONS_NOT_AVAILABLE });
-
+        browser.browserAction.setBadgeText({ tabId: id, text: EXTENSIONS_NOT_AVAILABLE });
         return;
       }
     });
@@ -36858,21 +36846,16 @@ const checkRequest = request => {
   const domainName5 = getOnlyDomainName(originUrl);
   const domainName6 = domainName5 ? domainName5.replace('www.', '') : '';
 
-  if (
-    (domainName && whitelistedElementsDomains.includes(domainName))
-    ||
-    (domainName2 && whitelistedElementsDomains.includes(domainName2))
-    ||
-    (domainName3 && whitelistedElementsDomains.includes(domainName3))
-    ||
-    (domainName4 && whitelistedElementsDomains.includes(domainName4))
-    ||
-    (domainName5 && whitelistedElementsDomains.includes(domainName5))
-    ||
-    (domainName6 && whitelistedElementsDomains.includes(domainName6))
-    ||
-    (true !== getItem('securityIsOn'))
-  ) {
+  const domainsToAllow = [ domainName, domainName2, domainName3, domainName4, domainName5, domainName6 ];
+  let toCancel = true;
+
+  domainsToAllow.map( domain => {
+      if(true !== getItem('securityIsOn') || (domain && whitelistedElementsDomains.includes(domain))){
+        toCancel = false;
+      }
+  });
+
+  if(!toCancel){
     return {
       cancel: false
     };
@@ -36904,7 +36887,6 @@ const checkRequest = request => {
        * SECURITY
        */
       if (blacklistedElementsTrackers.includes(url) || blacklistedElementsTrackers.includes(hostname) || blacklistedElementsTrackers.includes('www.' + hostname)) {
-        cancel = true;
 
         if (undefined !== data.security.trackers[tabId]) {
           data.security.trackers[tabId].push(url);
@@ -36913,10 +36895,13 @@ const checkRequest = request => {
         }
 
         addToStatistic('tracker');
+
+        return {
+          cancel: true
+        };
       }
 
       if (blacklistedElementsDomians.includes(hostname) || blacklistedElementsDomians.includes(url) || blacklistedElementsDomians.includes('www.' + hostname)) {
-        cancel = true;
 
         if (undefined !== data.security.urls[tabId]) {
           data.security.urls[tabId].push(url);
@@ -36925,11 +36910,14 @@ const checkRequest = request => {
         }
 
         addToStatistic('url');
+
+        return {
+          cancel: true
+        };
       }
 
       for (let x = 0; x <= blacklistedElementsUrlsIncludes.length - 1; x++) {
         if (-1 !== url.indexOf(blacklistedElementsUrlsIncludes[x])) {
-          cancel = true;
 
           if (undefined !== data.security.urlsIncludes[tabId]) {
             data.security.urlsIncludes[tabId].push(url);
@@ -36938,6 +36926,11 @@ const checkRequest = request => {
           }
 
           addToStatistic('urlInclude');
+
+          return {
+            cancel: true
+          };
+          
           break;
         }
       }

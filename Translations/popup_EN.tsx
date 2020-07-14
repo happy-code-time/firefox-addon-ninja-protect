@@ -14,8 +14,8 @@ const EN = {
   reset:'Klick this text to make an factory reset of this extension. All your custom lists entries, configuration and the global statistic will be deleted, so please make an export of your lists, settings and statistic. After this process make an import from the dashboard page.',
   menu_title_ninja: 'Ninja Icon',
   ninjaIcon: 'Ninja Icon of this extensions are token from',
-  turnOn: 'Turn NinjaProtect on',
-  turnOff: 'Turn NinjaProtect off',
+  turnOn: 'Turn Protector Ninja on',
+  turnOff: 'Turn Protector Ninja off',
   links: 'Links',
   deleteAllIframes: 'Delete iframes from current website',
   deleteAllCookies: 'Delete Cookies from current website',
@@ -223,7 +223,7 @@ const EN = {
       <div className="box-content--div">
         <p className="element-p">
           You can add here an cookie name or an domain name which should be deleted on each website.
-          Default this list has 640 entries with predefined cookie names or domain names
+          Default this list has 635 entries with predefined cookie names or domain names
           that using cookies for tracking purposes and there are automatically deleted by the security content.
         </p>
         <ul>
@@ -429,6 +429,15 @@ const EN = {
       </div>
     </span>
   ),
+  blockedElements_html: (
+    <span className="box-content">
+      <div className="box-content--div">
+        <p className="element-p">
+          Content blocker block's HTML content that's belong to the current visited website.  External content cannot be blocked, like: iframes. To block an element, activate the blocker from the Popup window of this extension then click on an HTML element on the website. All blocked elements can be deleted from the list below.
+        </p>
+      </div>
+    </span>
+  ),
   example: 'Examples',
   /**
    * Images download 
@@ -439,6 +448,7 @@ const EN = {
   imagesLoadingTabs: 'Loading active tabs...',
   current_tabs_title: 'Current tabs',
   filter: 'Filter',
+  filterLastRequests: 'Filter last 50 requests',
   filter_all: 'All',
   itemsPerSite: 'Per site',
   itemsPerSiteSuffix: 'images',
@@ -454,6 +464,7 @@ const EN = {
   notLoggedInImagesFavouritesManage: 'Only logged in users are able to manage the favourites list',
   tabsNoData: 'No valid tabs available',
   imagesLoadingData: 'Loading images...',
+  no_data_available: 'No data available',
   /*
    * List actions 
    */
@@ -481,7 +492,7 @@ const EN = {
   home_security_4: 'Blocking danger porn websites',
   home_security_5: 'Blocking custom danger words',
   home_security_6: 'Blocking custom websites HTML content',
-  upload: 'Drag & Drop NinjaProtect`s json file here...',
+  upload: 'Drag & Drop Protector Ninja`s json file here...',
   export: 'Export',
   exportAll: 'of global lists and settings',
   dangerCount: 'Protecting you!',

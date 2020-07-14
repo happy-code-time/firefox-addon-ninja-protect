@@ -30,8 +30,6 @@ import ModuleLanguages from '../AppFiles/Modules/PopupBoxes/ModuleLanguages';
 
 import ModulePopupBoxLinks from '../AppFiles/Modules/ModulePopupBoxLinks';
 
-import AppIcon from './pages/AppIcon';
-
 import Reset from './pages/Reset';
 
 import Blocker from './pages/Blocker';
@@ -173,11 +171,6 @@ class App extends Component {
                         text: this.translations.title_reset,
                         icon: <i className='fas fa-skull' />,
                         href: `${addonPrefixPopup()}#/reset`,
-                      },
-                      {
-                        text: this.translations.menu_title_ninja,
-                        icon: <i className='fas fa-icons' />,
-                        href: `${addonPrefixPopup()}#/icons`,
                       }
                     ]
                   }
@@ -229,7 +222,6 @@ class App extends Component {
                     <Route exact path="/iframes" component={Iframes} />
                     <Route exact path="/requests" component={Requests} />
                     <Route exact path="/statistic" component={Statistic} />
-                    <Route exact path="/icons" component={AppIcon} />
                     <Route exact path="/reset" component={Reset} />
                     <Route exact path="/blocker" component={Blocker} />
                   </Switch>

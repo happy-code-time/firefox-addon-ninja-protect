@@ -5,7 +5,7 @@ const ENTRY_DASHBOARD = {
     out: path.resolve(__dirname, './Distribution/Dashboard/')
 };
 
-const version = '4.8.0';
+const version = '4.8.1';
 
 const config = {
     mode: 'production',
@@ -15,7 +15,7 @@ const config = {
     entry: ['babel-polyfill', ENTRY_DASHBOARD.in ],
     output: {
         path: ENTRY_DASHBOARD.out,
-        filename: 'production.ninja.protection.v'+version+'.js',
+        filename: 'protector-ninja.v'+version+'.js',
     },
     cache: false,
     devtool: false,

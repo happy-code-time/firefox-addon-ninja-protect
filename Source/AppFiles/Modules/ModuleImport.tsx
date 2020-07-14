@@ -73,7 +73,7 @@ class ModuleImport extends React.Component {
                         }
     
                         if('application/json' !== file.type){
-                            errorMessage = 'Only previously exported NinjaProtect.json (settings and lists) file are allowed to import.';
+                            errorMessage = 'Only previously exported ProtectorNinja.json (settings and lists) file are allowed to import.';
                         }
     
                         /**

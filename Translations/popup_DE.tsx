@@ -14,8 +14,8 @@ const DE = {
   reset:'Klicken Sie das Icon an um diese Erweiterung auf die Werkeinstellungen zurücksetzten. Alle deine gespeicherten Daten und Einstellungen werden gelöscht. Bitte exporiere vor diesem Prozess deine Daten und Einstellungen um diese später (über das Dashboard) wieder zu importieren.',
   menu_title_ninja: 'Ninja Icon',
   ninjaIcon: 'Das Ninja Icon dieser Erweiterung wurde entnommen von',
-  turnOn: 'NinjaProtect anschalten',
-  turnOff: 'NinjaProtect ausschalten',
+  turnOn: 'Protector Ninja anschalten',
+  turnOff: 'Protector Ninja ausschalten',
   links: 'Links',
   deleteAllIframes: 'Iframes aus dieser Webseite enfernen',
   deleteAllCookies: 'Cookies verwalten',
@@ -223,7 +223,7 @@ const DE = {
       <div className="box-content--div">
         <p className="element-p">
           Sie können hier einen Cookie-Namen oder einen Domain-Namen hinzufügen, der auf jeder Website gelöscht werden soll.
-          Standardmäßig enthält diese Liste 640 Einträge mit vordefinierten Cookie-Namen oder Domain-Namen
+          Standardmäßig enthält diese Liste 635 Einträge mit vordefinierten Cookie-Namen oder Domain-Namen
           dass die Verwendung von Cookies für Tracking-Zwecke und dort automatisch durch den Sicherheitsinhalt gelöscht werden.
         </p>
         <ul>
@@ -429,6 +429,15 @@ const DE = {
       </div>
     </span>
   ),
+  blockedElements_html: (
+    <span className="box-content">
+      <div className="box-content--div">
+        <p className="element-p">
+          Content Blocker kann DOM Elemente der genutzten Website blockieren. Um dieses Feature zu nutzen aktiviere den Content Blocker von dem Popup Fenster, dieser Erweiterung und klicke auf ein Element das blockiert werden soll. Alle blockierten HTML Elemente können wieder hergestellt/ gelöscht werden in dem unteren Bereich.
+        </p>
+      </div>
+    </span>
+  ),
   example: 'Beispiele',
   /**
    * Images download 
@@ -439,6 +448,7 @@ const DE = {
   imagesLoadingTabs: 'Aktive tabs werden geladen...',
   current_tabs_title: 'Offene Tabs',
   filter: 'Filtern',
+  filterLastRequests: 'Letzte 50 Anfragen filtern',
   filter_all: 'Alle',
   itemsPerSite: 'Je Seite',
   itemsPerSiteSuffix: 'Fotos',
@@ -454,6 +464,7 @@ const DE = {
   notLoggedInImagesFavouritesManage: 'Nur angemeldete Benutzer können die Favoritenliste verwalten',
   tabsNoData: 'Keine validen Tabs vorhanden',
   imagesLoadingData: 'Fotos werden geladen...',
+  no_data_available: 'Keine Daten vorhanden',
   /*
    * List actions 
    */
@@ -481,7 +492,7 @@ const DE = {
   home_security_4: 'Blockierung von Pornographischen Seiten',
   home_security_5: 'Blockierung von Wörtern',
   home_security_6: 'Blockierung von Webseiten Content',
-  upload: 'Drag & Drop die NinjaProtects json Datei hier...',
+  upload: 'Drag & Drop die Protector Ninja json Datei hier...',
   export: 'Export',
   exportAll: 'der globalen Listen und Einstellungen',
   dangerCount: 'Ich beschütze dich!',

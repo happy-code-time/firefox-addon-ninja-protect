@@ -74,7 +74,7 @@ class App extends Component {
           </h1>
         </div>
         <div className="footer">
-            <a href={`${addonPrefixDashboard()}#/security-settings`}>
+            <a href={`${addonPrefixDashboard()}#/blacklist-urls`}>
               {
                 this.translations.popup_title_dashboard
               }

@@ -4,8 +4,6 @@ import AddonNotAvailable from '../../AppFiles/Modules/AddonNotAvailable';
 
 import getTranslations from '../../../Translations/index';
 
-import addToStore from '../../Store/addToStore';
-
 import { addonRoot } from '../../AppFiles/Functions/addonPrefix';
 
 interface WebsiteContainerProps {

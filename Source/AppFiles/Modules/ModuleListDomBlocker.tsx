@@ -32,6 +32,8 @@ import customKey from '../Functions/customKey';
 
 import addToStore from '../../Store/addToStore';
 
+import getSecurityList from '../Functions/getSecurityList';
+
 interface ListGlobalModuleProps {
     storageName: string;
 }
@@ -50,8 +52,12 @@ class ModuleListDomBlocker extends React.Component<ListGlobalModuleProps> {
     };
 
     public storageName: string;
+
     public listReadable: string;
+    
     public storageKey: string;
+
+    public example: any;
 
     constructor (props) {
         super(props);
@@ -82,6 +88,7 @@ class ModuleListDomBlocker extends React.Component<ListGlobalModuleProps> {
         this.storageName=this.props.storageName;
         this.listReadable=this.translations[ this.storageName ];
         this.storageKey='BLACKLIST';
+        this.example = getSecurityList();
     }
 
     componentDidMount() {
@@ -391,10 +398,10 @@ class ModuleListDomBlocker extends React.Component<ListGlobalModuleProps> {
             if (this.state.jsonData) {
                 try {
                     var blob = new Blob([JSON.stringify(this.state.jsonData)], { type: "application/json;charset=utf-8" });
-                    FileSaver.saveAs(blob, `NinjaProtect_SETTINGS_${customKey()}.json`);
+                    FileSaver.saveAs(blob, `ProtectorNinja_SETTINGS_${customKey()}.json`);
                 } catch (error) {
                     var blob = new Blob([`Error while creating Blob file. Error message: ${error}.`], { type: "application/json;charset=utf-8" });
-                    FileSaver.saveAs(blob, `NinjaProtect_SETTINGS_${customKey()}.json`);
+                    FileSaver.saveAs(blob, `ProtectorNinja_SETTINGS_${customKey()}.json`);
                 }
             }
         }, 300);
@@ -418,13 +425,6 @@ class ModuleListDomBlocker extends React.Component<ListGlobalModuleProps> {
                     }
                 </h1>
                 <div className="actions">
-                    <Link 
-                        title={this.translations.example}
-                        to='security-examples'
-                        className="button-action"
-                    >
-                        <i className="far fa-question-circle example-link"></i>
-                    </Link>
                     <i 
                         onClick={(e) => { this.saveToFileJson(e) }} 
                         className="fas fa-file-signature button-action icon-iframes"
@@ -440,6 +440,30 @@ class ModuleListDomBlocker extends React.Component<ListGlobalModuleProps> {
                         onClick={ (e) => { this.deleteAll() } } 
                         className="far fa-trash-alt button-action delete-all"
                     ></i>
+                </div>
+                <div className="Examples flex flex-column">
+                    {
+                        this.example.map(obj => {
+                            const { translated, img, name } = obj;
+
+                            if (name == this.storageName) {
+                                const jsx = this.translations[`${name}_html`];
+
+                                return (
+                                    <div key={customKey()} className="example">
+                                        <h1 className="ff-title h1 text-center">
+                                            {
+                                                translated
+                                            }
+                                        </h1>
+                                        {
+                                            jsx
+                                        }
+                                    </div>
+                                )
+                            }
+                        })
+                    }
                 </div>
                 <Pagination
                     /**

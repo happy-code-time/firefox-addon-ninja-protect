@@ -18,8 +18,6 @@ import Statistic from './pages/Statistic';
 
 import ErrorMessagesLearnMore from './pages/ErrorMessagesLearnMore';
 
-import Security from './pages/Security';
-
 import BlackWordsPage from './pages/blacklists/BlackWordsPage';
 
 import BlackUrlsPage from './pages/blacklists/BlackUrlsPage';
@@ -45,10 +43,6 @@ import BlacklistIframesNamesPage from './pages/blacklists/BlacklistIframesNamesP
 import WhitelistDomainsPage from './pages/whitelist/WhitelistDomainsPage';
 
 import SecuritySettings from './pages/SecuritySettings';
-
-import PrivacyTerms from './pages/PrivacyTerms';
-
-import SecurityExamples from './pages/SecurityExamples';
 
 import WebsiteContainer from '../AppFiles/Modules/Modules/WebsiteContainer';
 
@@ -147,36 +141,24 @@ class App extends Component {
                   data={
                     [
                       {
-                        attributes: {
-                          title: this.translations.menu_title_import,
-                        },
                         text: this.translations.menu_text_import,
                         icon: <i className='fas fa-cloud-upload-alt' />,
                         href: `${addonPrefixDashboard()}#/import`,
                       },
                       {
-                        attributes: {
-                          title: this.translations.menu_title_export,
-                        },
                         text: this.translations.menu_text_export,
                         icon: <i className='fas fa-cloud-download-alt' />,
                         href: `${addonPrefixDashboard()}#/export`,
                       },
                       {
-                        attributes: {
-                          title: this.translations.menu_title_security_settings,
-                        },
+                        text: this.translations.title_reset,
+                        icon: <i className="fas fa-skull" />,
+                        href: `${addonPrefixDashboard()}#/reset`,
+                      },
+                      {
                         text: this.translations.menu_text_security_settings,
                         icon: <i className='fas fa-cog' />,
                         href: `${addonPrefixDashboard()}#/security-settings`,
-                      },
-                      {
-                        attributes: {
-                          title: this.translations.menu_title_security_examples,
-                        },
-                        text: this.translations.menu_text_security_examples,
-                        icon: <i className='fas fa-copy' />,
-                        href: `${addonPrefixDashboard()}#/security-examples`
                       },
                       {
                         text: this.translations.menu_text_statistic_small,
@@ -187,11 +169,6 @@ class App extends Component {
                         text: this.translations.title_html_blocker,
                         icon: <i className='fas fa-crosshairs' />,
                         href: `${addonPrefixDashboard()}#/blocker`,
-                      },
-                      {
-                        text: this.translations.menu_text_security_main,
-                        icon: <i className='fas fa-shield-alt' />,
-                        href: `${addonPrefixDashboard()}#/security`,
                       },
                       {
                         icon: <i className="fab fa-black-tie"></i>,
@@ -254,16 +231,6 @@ class App extends Component {
                         href: `${addonPrefixDashboard()}#/whitelist-domains`,
                       },
                       {
-                        text: this.translations.accountPrivacyTerms,
-                        icon: <i className="fas fa-gavel" />,
-                        href: `${addonPrefixDashboard()}#/privacy-terms`,
-                      },
-                      {
-                        text: this.translations.title_reset,
-                        icon: <i className="fas fa-skull" />,
-                        href: `${addonPrefixDashboard()}#/reset`,
-                      },
-                      {
                         text: this.translations.menu_title_ninja,
                         icon: <i className='fas fa-icons' />,
                         href: `${addonPrefixDashboard()}#/icons`,
@@ -305,7 +272,6 @@ class App extends Component {
             <HashRouter>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/security" component={Security} />
                 <Route exact path="/statistic" component={Statistic} />
                 <Route exact path="/blacklist-words" component={BlackWordsPage} />
                 <Route exact path="/blacklist-urls" component={BlackUrlsPage} />
@@ -320,9 +286,7 @@ class App extends Component {
                 <Route exact path="/360-dom-blocker-id" component={BlacklistedIdPage} />
                 <Route exact path="/whitelist-domains" component={WhitelistDomainsPage} />
                 <Route exact path="/security-settings" component={SecuritySettings} />
-                <Route exact path="/privacy-terms" component={PrivacyTerms} />
                 <Route exact path="/error-messages-learn-more" component={ErrorMessagesLearnMore} />
-                <Route exact path="/security-examples" component={SecurityExamples} />
                 <Route exact path="/export" component={Export} />
                 <Route exact path="/import" component={Import} />
                 <Route exact path="/icons" component={AppIcon} />

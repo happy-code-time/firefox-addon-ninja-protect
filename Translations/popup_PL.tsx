@@ -14,8 +14,8 @@ const PL = {
   reset:'Kliknij ten tekst aby przeprowadzić reset tej wtyczki do ustawień fabrycznych. Wszystkie twoja dane z list, ustawienia i statystyka zostana usunięte. Przejdz najpierw do działu eksportu danych aby po tym resecie móc wykonać import danych.',
   menu_title_ninja: 'Ikonka Ninja',
   ninjaIcon: 'Ikonka Ninja tego rozszerzenia została wzięta z',
-  turnOn: 'Włącz NinjaProtect',
-  turnOff: 'Wyłącz NinjaProtect',
+  turnOn: 'Włącz Protector Ninja',
+  turnOff: 'Wyłącz Protector Ninja',
   links: 'Linki',
   deleteAllIframes: 'Usuń ramki z bierzącej strony',
   deleteAllCookies: 'Usuń ciasteczka z bierzącej strony',
@@ -432,6 +432,15 @@ const PL = {
       </div>
     </span>
   ),
+  blockedElements_html: (
+    <span className="box-content">
+      <div className="box-content--div">
+        <p className="element-p">
+          Content Blocker pozwala na zablokowanie treści bieżącej strony internetowej. Aby zablokować dany element drzewa DOM, włącz usługę Content Blocker z okna "Popup" tego rozszerzenia potem wybierz element ze strony internetowej. Wszystkie zablokowane elementy mogą zostać skasowane z listy poniżej.
+        </p>
+      </div>
+    </span>
+  ),
   example: 'Przykłady',
   /**
    * Images download 
@@ -442,6 +451,7 @@ const PL = {
   imagesLoadingTabs: 'Ładowanie aktywnych okienek...',
   current_tabs_title: 'Aktualne okna',
   filter: 'Filtruj',
+  filterLastRequests: 'Filtruj ostatnie 50 zapytań',
   filter_all: 'Wszystkie',
   itemsPerSite: 'Co stronę',
   itemsPerSiteSuffix: 'zdjęć',
@@ -457,6 +467,7 @@ const PL = {
   notLoggedInImagesFavouritesManage: 'Tylko zalogowani użytkownicy mogą zarządzać listą ulubionych',
   tabsNoData: 'Brak poprawnych okienek',
   imagesLoadingData: 'Ładowanie zdjęć...',
+  no_data_available: 'Brak danych',
   /*
    * List actions 
    */
@@ -483,7 +494,7 @@ const PL = {
   home_security_4: 'Blokowanie niebezpiecznych stron pornograficznych',
   home_security_5: 'Blokowanie niebezpiecznych słow',
   home_security_6: 'Blokowanie niebezpiecznych zawartości stron internetowych',
-  upload: 'Przeciągnij i upuść plik json NinjaProtecta tutaj...',
+  upload: 'Przeciągnij i upuść plik json Protector Ninja tutaj...',
   export: 'Eksport',
   exportAll: 'globalnych list i ustawien',
   dangerCount: 'Chronię cię!',

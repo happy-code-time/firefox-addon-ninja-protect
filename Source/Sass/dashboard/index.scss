@@ -223,28 +223,28 @@ body {
         border-top: 15px solid $border-color;
         z-index: 1;
       }
-
-      .dashboard-link {
-        width: 230px;
-        margin: 20px auto;
-        display: block;
-        box-sizing: border-box;
-        padding: 10px 20px;
-        text-align: center;
-        font-size: 0.87rem;
-        text-decoration: none;
-        border-radius: 5px;
-        border: 1px solid $border-color;
-        background-color: $new-dark;
-        color: $new-orange;
-        box-shadow: 0px 0px 13px transparent;
-        transition-duration: $default_transition;
-      }
-
-      .dashboard-link:hover {
-        cursor: pointer;
-        box-shadow: 0px 0px 13px $new-dark;
-      }
     }
+  }
+
+  .dashboard-link {
+    width: 230px;
+    margin: 20px auto;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 0.87rem;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid $border-color;
+    background-color: $new-dark;
+    color: $new-orange;
+    box-shadow: 0px 0px 13px transparent;
+    transition-duration: $default_transition;
+  }
+
+  .dashboard-link:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 13px $new-dark;
   }
 }

@@ -444,7 +444,7 @@ class Requests extends React.Component<WebsiteContainerProps> {
                     }
                 </div>
                 <InputAnimation
-                    placeholder='Filter...'
+                    placeholder={this.translations.filterLastRequests}
                     type="text"
                     currentValue={filter}
                     callback={this.filterData}

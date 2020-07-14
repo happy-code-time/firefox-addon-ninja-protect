@@ -76,6 +76,12 @@ const getSecurityList = () => {
             translated: translations.whitelistedElementsDomains,
             link: 'whitelist-domains',
             img: 'desk-1081708_1920.jpg'
+        },
+        {
+            name: 'blockedElements',
+            translated: 'Content Blocker',
+            link: 'blocker',
+            img: 'desk-1081708_1920.jpg'
         }
     ];
 }
