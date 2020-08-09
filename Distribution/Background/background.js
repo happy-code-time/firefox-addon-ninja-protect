@@ -1,8 +1,8 @@
 const HEARD = '💛';
 
-const EXTENSIONS_NOT_AVAILABLE = '💤';
+const EXTENSIONS_NOT_AVAILABLE = '';
 
-const EXTENSIONS_OFF = '💤';
+const EXTENSIONS_OFF = '';
 
 /**
  * Geet item from the local storage
@@ -130,7 +130,9 @@ let GLOBAL_BLACKLIST_URL_TRACKER = [
   'https://tr.outbrain.com/pixel?',
   'https://secure.adnxs.com/seg?',
   'https://cm.g.doubleclick.net/pixel?',
-
+  'https://cdn.carbonads.com/carbon.js',
+  'https://cdn4.buysellads.net',
+  'https://m.servedby-buysellads.com/monetization.js',
   /**
    * Fingerprints
    */
@@ -9394,12 +9396,10 @@ const ADVANCED_BLACKLIST_DOMAINS = [
   '9down.us.intellitxt.com',
   '9ivwbox.de',
   '9vwbox.de',
-  '! Update 20180130',
   'aaroaj.com',
   'acquia.com',
   'addefend.com',
   'addefend-platform.com',
-  '! Update 20180130',
   'a.1nimo.com',
   'a.abnad.net',
   'a.abv.bg',
@@ -36528,13 +36528,13 @@ const mapping = {
     defaultValue: [],
   },
   blacklistedElementsDomians: {
-    defaultValue: [...GLOBAL_BLACKLIST_URL_BLOCKER, ...GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE, ...GLOBAL_LIST_BLACKLIST],
+    defaultValue: GLOBAL_LIST_BLACKLIST,
   },
   blacklistedElementsUrlsIncludes: {
     defaultValue: [...GLOBAL_BLACKLIST_URL_INCLUDES, ...GLOBAL_LIST_BLACKLIST_PORN],
   },
   blacklistedElementsTrackers: {
-    defaultValue: GLOBAL_BLACKLIST_URL_TRACKER,
+    defaultValue: [...GLOBAL_BLACKLIST_URL_TRACKER, ...GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE, ...GLOBAL_BLACKLIST_URL_BLOCKER ]
   },
   blacklistedElementsCookies: {
     defaultValue: DEFAULT_COOKIE_BLACKLIST,
@@ -36668,6 +36668,7 @@ const updateToolbar = () => {
          */
         let count = 0;
         let data = setAndGetDefaultDataStructure();
+
         const keysTrackers = Object.keys(data.security.trackers);
         const keysUrls = Object.keys(data.security.urls);
         const keysUrlsIncludes = Object.keys(data.security.urlsIncludes);
@@ -36776,17 +36777,6 @@ const updateToolbar = () => {
         browser.browserAction.setBadgeText({ tabId: id, text: HEARD });
         return;
       }
-
-      /**
-       * Addon is off
-       */
-      if (false == getItem('security')) {
-        // @ts-ignore
-        browser.browserAction.setBadgeBackgroundColor({ tabId: id, color: 'rgb(69,69,69)' });
-        // @ts-ignore
-        browser.browserAction.setBadgeText({ tabId: id, text: EXTENSIONS_OFF });
-        return;
-      }
     })
     .catch(error => {
       if (-1 === url.indexOf('http')) {
@@ -36818,17 +36808,6 @@ const getOnlyDomainName = url => {
   return '';
 };
 
-const setAndGetHistory = () => {
-  let requestHistory = getItem('requestHistory');
-
-  if (null == requestHistory) {
-    setItemToLocalStorage('requestHistory', {});
-    requestHistory = {};
-  }
-
-  return requestHistory;
-};
-
 /**
  * Request listener
  */
@@ -36840,13 +36819,13 @@ const checkRequest = request => {
   const domainName = getOnlyDomainName(url);
   const domainName2 = domainName ? domainName.replace('www.', '') : '';
 
-  const domainName3 = getOnlyDomainName(documentUrl);
-  const domainName4 = domainName3 ? domainName3.replace('www.', '') : '';
+  // const domainName3 = getOnlyDomainName(documentUrl);
+  // const domainName4 = domainName3 ? domainName3.replace('www.', '') : '';
 
-  const domainName5 = getOnlyDomainName(originUrl);
-  const domainName6 = domainName5 ? domainName5.replace('www.', '') : '';
+  // const domainName5 = getOnlyDomainName(originUrl);
+  // const domainName6 = domainName5 ? domainName5.replace('www.', '') : '';
 
-  const domainsToAllow = [ domainName, domainName2, domainName3, domainName4, domainName5, domainName6 ];
+  const domainsToAllow = [ domainName, domainName2 ];
   let toCancel = true;
 
   domainsToAllow.map( domain => {
@@ -36862,20 +36841,8 @@ const checkRequest = request => {
   }
 
   try {
-    let requestHistory = setAndGetHistory();
     let data = setAndGetDefaultDataStructure();
     tabId = parseInt(tabId);
-
-    if (undefined == requestHistory[tabId]) {
-      requestHistory[tabId] = [];
-    }
-    requestHistory[tabId].push(url);
-
-    if (50 < requestHistory[tabId].length) {
-      requestHistory[tabId].pop();
-    }
-
-    setItemToLocalStorage('requestHistory', requestHistory);
 
     const hostname = getOnlyDomainName(documentUrl);
     let blacklistedElementsTrackers = getItem('blacklistedElementsTrackers') ? getItem('blacklistedElementsTrackers') : [];
@@ -36886,8 +36853,7 @@ const checkRequest = request => {
       /**
        * SECURITY
        */
-      if (blacklistedElementsTrackers.includes(url) || blacklistedElementsTrackers.includes(hostname) || blacklistedElementsTrackers.includes('www.' + hostname)) {
-
+      if(blacklistedElementsTrackers.includes(hostname) || blacklistedElementsTrackers.includes('www.' + hostname)){
         if (undefined !== data.security.trackers[tabId]) {
           data.security.trackers[tabId].push(url);
         } else {
@@ -36895,10 +36861,32 @@ const checkRequest = request => {
         }
 
         addToStatistic('tracker');
+        setItemToLocalStorage('data', data);
+        updateToolbar();
 
         return {
           cancel: true
         };
+      }
+
+      for(let x = 0; x <= blacklistedElementsTrackers.length-1; x++){
+
+        if(-1 !== url.indexOf(blacklistedElementsTrackers[x])){
+        
+          if (undefined !== data.security.trackers[tabId]) {
+            data.security.trackers[tabId].push(url);
+          } else {
+            data.security.trackers[tabId] = [url];
+          }
+  
+          addToStatistic('tracker');
+          setItemToLocalStorage('data', data);
+          updateToolbar();
+
+          return {
+            cancel: true
+          };
+        }
       }
 
       if (blacklistedElementsDomians.includes(hostname) || blacklistedElementsDomians.includes(url) || blacklistedElementsDomians.includes('www.' + hostname)) {
@@ -36910,6 +36898,8 @@ const checkRequest = request => {
         }
 
         addToStatistic('url');
+        setItemToLocalStorage('data', data);
+        updateToolbar();
 
         return {
           cancel: true
@@ -36926,6 +36916,8 @@ const checkRequest = request => {
           }
 
           addToStatistic('urlInclude');
+          setItemToLocalStorage('data', data);
+          updateToolbar();
 
           return {
             cancel: true
@@ -36934,9 +36926,6 @@ const checkRequest = request => {
           break;
         }
       }
-
-      updateToolbar();
-      setItemToLocalStorage('data', data);
     }
 
     return {
@@ -37749,16 +37738,6 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
               isWhiteIframes = true;
             }
 
-            let requestHistory = getItem('requestHistory');
-
-            if (requestHistory && undefined !== requestHistory[id]) {
-              requestHistory = requestHistory[id];
-              requestHistory = requestHistory.reverse();
-            }
-            else {
-              requestHistory = [];
-            }
-
             let blockerStatus = getItem(`block-item-status-${id}`);
 
             if (null === blockerStatus) {
@@ -37778,7 +37757,6 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 isBlackCookies,
                 isWhiteDomains,
                 isWhiteIframes,
-                requestHistory,
                 blacklistedElementsTrackers,
                 blacklistedElementsDomians,
                 blacklistedElementsCookies,
@@ -38047,7 +38025,10 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             //@ts-ignore
             browser.cookies.getAll({ url })
               .then(cookies => {
-                return sendResponse(cookies);
+                return sendResponse({
+                  cookies,
+                  blacklistedElementsCookies: getItem('blacklistedElementsCookies')
+                });
               })
               .catch(() => {
                 return sendResponse([])
@@ -38323,12 +38304,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
     case 'reset-data': {
       let data = setAndGetDefaultDataStructure();
-      let requestHistory = setAndGetHistory();
       const { id } = tab;
-
-      requestHistory[id] = [];
-      setItemToLocalStorage('requestHistory', requestHistory);
-
       data.security.trackers[id] = [];
       data.security.urls[id] = [];
       data.security.urlsIncludes[id] = [];

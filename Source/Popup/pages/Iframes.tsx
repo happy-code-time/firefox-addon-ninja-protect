@@ -8,6 +8,12 @@ import NoDataIframes from '../../AppFiles/Modules/NoDataIframes';
 
 import LoadingAnimation from '../../AppFiles/Modules/LoadingAnimation';
 
+import addToStore from '../../Store/addToStore';
+
+import removeItemFromList from '../../AppFiles/Functions/storage/removeItemFromList';
+
+import addItemToList from '../../AppFiles/Functions/storage/addItemToList';
+
 interface WebsiteContainerProps {
     contentData?: string | any;
     loginRequired: boolean;
@@ -51,7 +57,8 @@ class Iframes extends React.Component<WebsiteContainerProps> {
             loginRequired: this.props.loginRequired,
             redirectAfterLogin: this.props.redirectAfterLogin ? this.props.redirectAfterLogin : '',
             iframes: [],
-            iframesJsx: []
+            iframesJsx: [],
+            blacklistedElementsIframesSources: []
         };
 
         this.translations = getTranslations();
@@ -78,9 +85,19 @@ class Iframes extends React.Component<WebsiteContainerProps> {
             })
     }
 
+    addToBlacklist(value){
+        const data: any = addItemToList('blacklistedElementsIframesSources', value);
+        addToStore(data.message, 0);
+    }
+
+    removeFromBlacklist(value){
+        const data: any = removeItemFromList('blacklistedElementsIframesSources', value);
+        addToStore(data.message, 0);
+    }
+
     buildIframesJsx() {
         const iframesJsx = [];
-        const { iframes } = this.state;
+        const { iframes, blacklistedElementsIframesSources } = this.state;
 
         iframes.map((iframe, i) => {
             const { src, id, className } = iframe;
@@ -105,7 +122,17 @@ class Iframes extends React.Component<WebsiteContainerProps> {
                             }
                         </span>
                         <span className="right">
-                            {src}
+                            {
+                                src
+                            }
+                            {
+                                blacklistedElementsIframesSources.includes(src) &&
+                                <i className="fas fa-minus" title={this.translations.removeFromBlacklistIframesIncluds} onClick={ () => this.removeFromBlacklist(src) }/>
+                            }
+                            {
+                                !blacklistedElementsIframesSources.includes(src) &&
+                                <i className="fas fa-plus" title={this.translations.addToBlacklistIframesIncluds} onClick={ () => this.addToBlacklist(src) }/>
+                            }
                         </span>
                     </li>
                     <li className="flex">

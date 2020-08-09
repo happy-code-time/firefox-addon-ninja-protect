@@ -1,7 +1,7 @@
 {
   "name": "protectorninja",
-  "version": "4.8.1",
-  "description": "ProtectorNinja",
+  "version": "5.0.0",
+  "description": "Protector",
   "scripts": {
     "compile": "./node_modules/.bin/gulp compile",
     "prettier": "node node_modules/.bin/prettier --write Source/**/*.tsx",

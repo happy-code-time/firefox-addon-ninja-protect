@@ -347,13 +347,13 @@ var checkWebsiteToBlock = function (maximumOfDangerWords = 100) {
 // @ts-ignore
 browser.runtime.sendMessage({ action: 'reset-data' });
 
-/**
- * If user leaves the tab
- */
-window.onbeforeunload = () => {
-  // @ts-ignore
-  browser.runtime.sendMessage({ action: 'reset-data' });
-};
+// /**
+//  * If user leaves the tab
+//  */
+// window.onbeforeunload = () => {
+//   // @ts-ignore
+//   browser.runtime.sendMessage({ action: 'reset-data' });
+// };
 
 class Security {
   constructor() {

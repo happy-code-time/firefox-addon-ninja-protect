@@ -315,7 +315,7 @@ class ListGlobalModule extends React.Component<ListGlobalModuleProps> {
             if (this.state.jsonData) {
                 try {
                     var blob = new Blob([JSON.stringify(this.state.jsonData)], { type: "application/json;charset=utf-8" });
-                    FileSaver.saveAs(blob, `ProtectorNinja-${self.storageName}.json`);
+                    FileSaver.saveAs(blob, `Protector-${self.storageName}.json`);
                 } catch (error) {
                     addToStore(`Error while creating Blob file. Error message: ${error}.`, -1);
                 }

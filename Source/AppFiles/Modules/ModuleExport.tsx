@@ -40,7 +40,7 @@ class ModuleExport extends Component {
             .then(response => {
                 try {
                     var blob = new Blob([JSON.stringify(response)], { type: "application/json;charset=utf-8" });
-                    FileSaver.saveAs(blob, `ProtectorNinja-settings.json`);
+                    FileSaver.saveAs(blob, `Protector-settings.json`);
                 } catch (error) {
                     addToStore(`Error while creating Blob file. Error message: ${error}.` ,-1);
                 }

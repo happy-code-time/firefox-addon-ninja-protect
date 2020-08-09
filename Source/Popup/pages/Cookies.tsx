@@ -8,6 +8,12 @@ import NoDataCookies from '../../AppFiles/Modules/NoDataCookies';
 
 import LoadingAnimation from '../../AppFiles/Modules/LoadingAnimation';
 
+import addItemToList from '../../AppFiles/Functions/storage/addItemToList';
+
+import addToStore from '../../Store/addToStore';
+
+import removeItemFromList from '../../AppFiles/Functions/storage/removeItemFromList';
+
 interface WebsiteContainerProps {
     contentData?: string | any;
     loginRequired: boolean;
@@ -61,7 +67,8 @@ class Cookies extends React.Component<WebsiteContainerProps> {
             blocked_words: 0,
             blocked_requests: 0,
             cookies: [],
-            cookiesJsx: []
+            cookiesJsx: [],
+            blacklistedElementsCookies: []
         };
 
         this.translations = getTranslations();
@@ -76,9 +83,12 @@ class Cookies extends React.Component<WebsiteContainerProps> {
         browser.runtime.sendMessage({
             action: 'get-active-tab-cookies'
         })
-            .then(cookies => {
+            .then( data => {
+                const { cookies, blacklistedElementsCookies } = data;
+
                 this.setState({
-                    cookies
+                    cookies,
+                    blacklistedElementsCookies
                 }, () => {
                     this.buildCookiesJsx();
                 });
@@ -88,9 +98,19 @@ class Cookies extends React.Component<WebsiteContainerProps> {
             })
     }
 
+    addToBlacklist(value){
+        const data: any = addItemToList('blacklistedElementsCookies', value);
+        addToStore(data.message, 0);
+    }
+
+    removeFromBlacklist(value){
+        const data: any = removeItemFromList('blacklistedElementsCookies', value);
+        addToStore(data.message, 0);
+    }
+
     buildCookiesJsx() {
         const cookiesJsx = [];
-        const { cookies } = this.state;
+        const { cookies, blacklistedElementsCookies } = this.state;
 
         cookies.map((cookie, i) => {
             const { domain, name, value } = cookie;
@@ -115,7 +135,17 @@ class Cookies extends React.Component<WebsiteContainerProps> {
                             }
                         </span>
                         <span className="right">
-                            {domain}
+                            {
+                                domain
+                            }
+                            {
+                                blacklistedElementsCookies.includes(domain) &&
+                                <i className="fas fa-minus" title={this.translations.removeFromBlacklistCookies} onClick={ () => this.removeFromBlacklist(domain) }/>
+                            }
+                            {
+                                !blacklistedElementsCookies.includes(domain) &&
+                                <i className="fas fa-plus" title={this.translations.addToBlacklistCookies} onClick={ () => this.addToBlacklist(domain) }/>
+                            }
                         </span>
                     </li>
                     <li className="flex">
@@ -125,7 +155,17 @@ class Cookies extends React.Component<WebsiteContainerProps> {
                             }
                         </span>
                         <span className="right">
-                            {name}
+                            {
+                                name
+                            }
+                            {
+                                blacklistedElementsCookies.includes(name) &&
+                                <i className="fas fa-minus" title={this.translations.removeFromBlacklistCookies} onClick={ () => this.removeFromBlacklist(name) }/>
+                            }
+                            {
+                                !blacklistedElementsCookies.includes(name) &&
+                                <i className="fas fa-plus" title={this.translations.addToBlacklistCookies} onClick={ () => this.addToBlacklist(name) }/>
+                            }
                         </span>
                     </li>
                     <li className="flex">

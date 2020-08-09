@@ -167,7 +167,7 @@ class App extends Component {
                       },
                       {
                         text: this.translations.title_html_blocker,
-                        icon: <i className='fas fa-crosshairs' />,
+                        icon: <i className='fas fa-hand-pointer' />,
                         href: `${addonPrefixDashboard()}#/blocker`,
                       },
                       {

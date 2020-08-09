@@ -40,9 +40,9 @@ class AppIcon extends React.Component {
                 <a
                     className="dashboard-link"
                     target='_blank'
-                    href='http://www.icons-land.com'
+                    href='http://www.fasticon.com'
                 >
-                    http://www.icons-land.com
+                    http://www.fasticon.com
                 </a>
             </div>
         );

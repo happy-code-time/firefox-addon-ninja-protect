@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "ProtectorNinja",
-  "version": "4.8.1",
-  "description": "ProtectorNinja",
+  "name": "Protector",
+  "version": "5.0.0",
+  "description": "Protector",
   "browser_action": {
     "browser_style": true,
     "default_popup": "Distribution/Popup/index.html",

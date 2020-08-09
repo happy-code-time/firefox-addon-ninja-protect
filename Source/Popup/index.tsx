@@ -20,8 +20,6 @@ import Security from './pages/Security';
 
 import Iframes from './pages/Iframes';
 
-import Requests from './pages/Requests';
-
 import Statistic from './pages/Statistic';
 
 import GlobalMessages from '../AppFiles/Modules/Modules/GlobalMessages';
@@ -125,12 +123,12 @@ class App extends Component {
                           title: this.translations.menu_title_home,
                         },
                         text: this.translations.menu_text_home,
-                        icon: <i className='fas fa-user-ninja' />,
+                        icon: <i className='fas fa-home' />,
                         href: `${addonPrefixPopup()}#/`,
                       },
                       {
                         text: this.translations.title_html_blocker,
-                        icon: <i className='fas fa-crosshairs' />,
+                        icon: <i className='fas fa-hand-pointer' />,
                         href: `${addonPrefixPopup()}#/blocker`,
                       },
                       {
@@ -156,11 +154,6 @@ class App extends Component {
                         text: this.translations.menu_text_iframes,
                         icon: <i className='far fa-window-restore' />,
                         href: `${addonPrefixPopup()}#/iframes`,
-                      },
-                      {
-                        text: this.translations.menu_text_requests,
-                        icon: <i className='fas fa-globe-americas' />,
-                        href: `${addonPrefixPopup()}#/requests`,
                       },
                       {
                         text: this.translations.menu_text_statistic_small,
@@ -220,7 +213,6 @@ class App extends Component {
                     <Route exact path="/cookies" component={Cookies} />
                     <Route exact path="/security" component={Security} />
                     <Route exact path="/iframes" component={Iframes} />
-                    <Route exact path="/requests" component={Requests} />
                     <Route exact path="/statistic" component={Statistic} />
                     <Route exact path="/reset" component={Reset} />
                     <Route exact path="/blocker" component={Blocker} />
