@@ -133,6 +133,9 @@ let GLOBAL_BLACKLIST_URL_TRACKER = [
   'https://cdn.carbonads.com/carbon.js',
   'https://cdn4.buysellads.net',
   'https://m.servedby-buysellads.com/monetization.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js',
+  'https://m.servedby-buysellads.com/monetization.js',
+  'https://adservice.google.pl/adsid/integrator.sync.js',
   /**
    * Fingerprints
    */
@@ -282,7 +285,6 @@ let GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE = [
   'googleads.g.doubleclick.net',
   'googletagmanager.com',
   'gostats.com',
-  'gstatic.com',
   'hightraffic.com',
   'hightrafficads.com',
   'hightraffics.net',
@@ -1408,7 +1410,6 @@ let GLOBAL_BLACKLIST_URL_BLOCKER = [
   'disqus.com',
   'disquscdn.com',
   'api-cdn.embed.ly',
-  'gstatic.com',
   'cx.atdmt.com',
   'ad1.adfarm1.adition.com',
   'sp.popcash.net',
@@ -8391,7 +8392,6 @@ let DEFAULT_COOKIE_BLACKLIST = [
   '.googleads.g.doubleclick.net',
   '.googletagmanager.com',
   '.gostats.com',
-  '.gstatic.com',
   '.hightraffic.com',
   '.hightrafficads.com',
   '.hightraffics.net',
@@ -8706,7 +8706,6 @@ let DEFAULT_COOKIE_BLACKLIST = [
   'googleads.g.doubleclick.net',
   'googletagmanager.com',
   'gostats.com',
-  'gstatic.com',
   'hightraffic.com',
   'hightrafficads.com',
   'hightraffics.net',
@@ -8933,7 +8932,7 @@ const GLOBAL_BLACKLIST_URL_INCLUDES = [
   'toptal.com/cdn-cgi/beacon/performance?',
   'ls.hit.gemius.pl/lsget.html',
   'd26fm7srjxtyjm.cloudfront.net/i?stm=',
-  // 'bam.nr-data.net/',
+  'https://stats.g.doubleclick.net/r/collect',
   '.storage.googleapis.com/guide-content/',
   '.storage.googleapis.com/guide',
   'ssl.google-analytics.com',
@@ -8966,7 +8965,9 @@ const GLOBAL_BLACKLIST_URL_INCLUDES = [
   'https://acdn.adnxs.com/ib/static/usersync/v3/async_usersync.html',
   'https://www.google.com/afs/ads?q=',
   'https://ads.pubmatic.com/AdServer/js/showad.js',
-  'https://tpc.googlesyndication.com/sodar/'
+  'https://tpc.googlesyndication.com/sodar/',
+  'https://www.google-analytics.com/r/collect?',
+  'https://www.google-analytics.com/analytics.js',
 ];
 
 const GLOBAL_BLACKLIST_HREF = [
