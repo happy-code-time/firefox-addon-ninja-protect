@@ -190,7 +190,7 @@ class App extends Component {
                 data={
                   [
                     {
-                      href: 'https://addons.mozilla.org/de/firefox/addon/ninja-protect/',
+                      href: 'https://addons.mozilla.org/de/firefox/addon/master-protector/',
                       icon: <i className='fab fa-firefox-browser' />,
                       text: 'Firefox Hub',
                       attributes: {

@@ -607,15 +607,7 @@ let GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE = [
   'https://googleads.g.doubleclick.net',
   'https://googleads.g.doubleclick.net/pagead/id',
   'https://js.hs-analytics.net',
-  'https://ls.hit.gemius.pl/lsget.html',
-  'https://myao.adocean.pl',
-  'https://myao.adocean.pl/files/js/ado.js',
-  'https://platform.twitter.com/widgets.js',
-  'https://platform.twitter.com/widgets/widget_iframe',
-  'https://pro.hit.gemius.pl/_1575061189619/redot.js',
   'https://pro.hit.gemius.pl/_1575913202099/redot.gif',
-  'https://pro.hit.gemius.pl/fpdata.js',
-  'https://pro.hit.gemius.pl/hmapxy.js',
   'https://sb.scorecardresearch.com/beacon.js',
   'https://secure.quantserve.com/quant.js',
   'https://static.doubleclick.net',
@@ -8924,17 +8916,13 @@ const GLOBAL_BLACKLIST_URL_INCLUDES = [
   'superfastcdn.com/script/firefox.js',
   'jwpltx.com/v1/jwplayer6/ping.gif',
   'imasdk.googleapis.com/js/core/',
-  's.tvp.pl/files/portale-v4/polityka-prywatnosci/js/cookie-overlay-pl.js',
   'static.cloudflareinsights.com/beacon.min.js',
-  'appinfo.toptal.com/script.js',
   'https://appinfo.toptal.com/grab',
   'appinfo.toptal.com/grab',
   'toptal.com/cdn-cgi/beacon/performance?',
   'ls.hit.gemius.pl/lsget.html',
   'd26fm7srjxtyjm.cloudfront.net/i?stm=',
   'https://stats.g.doubleclick.net/r/collect',
-  '.storage.googleapis.com/guide-content/',
-  '.storage.googleapis.com/guide',
   'ssl.google-analytics.com',
   'pagead2.googlesyndication.com',
   'https://tpc.googlesyndication.com/simgad/',
@@ -36764,7 +36752,7 @@ const updateToolbar = () => {
         // @ts-ignore
         browser.browserAction.setBadgeBackgroundColor({ tabId: id, color: 'rgb(69,69,69)' });
         // @ts-ignore
-        browser.browserAction.setBadgeText({ tabId: id, text: JSON.stringify(count) });
+        return browser.browserAction.setBadgeText({ tabId: id, text: JSON.stringify(count) });
       }
 
       /**
@@ -38106,7 +38094,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
           const { id, url } = tabData[0];
           let foundMatch = false;
 
-          if (blacklistedElementsDomians.includes(hostname)) {
+          if (hostname && url && (blacklistedElementsDomians.includes(hostname) || blacklistedElementsUrlsIncludes.includes(hostname))) {
 
             if (undefined !== data.security.urls[id]) {
               data.security.urls[id].push(url);
@@ -38119,7 +38107,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             reason = hostname;
           }
 
-          if (blacklistedElementsDomians.includes(url)) {
+          if (url && blacklistedElementsDomians.includes(url)) {
 
             if (undefined !== data.security.urls[id]) {
               data.security.urls[id].push(url);
@@ -38130,19 +38118,6 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
             addToStatistic('domain');
             foundMatch = true;
             reason = url;
-          }
-
-          if (blacklistedElementsUrlsIncludes.includes(hostname)) {
-
-            if (undefined !== data.security.urlsIncludes[id]) {
-              data.security.urlsIncludes[id].push(url);
-            } else {
-              data.security.urlsIncludes[id] = [url];
-            }
-
-            addToStatistic('domain');
-            foundMatch = true;
-            reason = hostname;
           }
 
           for (let x = 0; x <= blacklistedElementsUrlsIncludes.length - 1; x++) {

@@ -1,6 +1,6 @@
 {
   "name": "protectorninja",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "Protector",
   "scripts": {
     "compile": "./node_modules/.bin/gulp compile",
