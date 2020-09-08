@@ -52,8 +52,6 @@ import ModuleLanguages from '../AppFiles/Modules/PopupBoxes/ModuleLanguages';
 
 import ModulePopupBoxLinks from '../AppFiles/Modules/ModulePopupBoxLinks';
 
-import AppIcon from '../Popup/pages/AppIcon';
-
 import Reset from './pages/Reset';
 
 import Blocker from './pages/Blocker';
@@ -141,31 +139,6 @@ class App extends Component {
                   data={
                     [
                       {
-                        text: this.translations.menu_text_import,
-                        icon: <i className='fas fa-cloud-upload-alt' />,
-                        href: `${addonPrefixDashboard()}#/import`,
-                      },
-                      {
-                        text: this.translations.menu_text_export,
-                        icon: <i className='fas fa-cloud-download-alt' />,
-                        href: `${addonPrefixDashboard()}#/export`,
-                      },
-                      {
-                        text: this.translations.title_reset,
-                        icon: <i className="fas fa-skull" />,
-                        href: `${addonPrefixDashboard()}#/reset`,
-                      },
-                      {
-                        text: this.translations.menu_text_security_settings,
-                        icon: <i className='fas fa-cog' />,
-                        href: `${addonPrefixDashboard()}#/security-settings`,
-                      },
-                      {
-                        text: this.translations.menu_text_statistic_small,
-                        icon: <i className='fas fa-chart-bar' />,
-                        href: `${addonPrefixDashboard()}#/statistic`,
-                      },
-                      {
                         text: this.translations.title_html_blocker,
                         icon: <i className='fas fa-hand-pointer' />,
                         href: `${addonPrefixDashboard()}#/blocker`,
@@ -231,10 +204,30 @@ class App extends Component {
                         href: `${addonPrefixDashboard()}#/whitelist-domains`,
                       },
                       {
-                        text: this.translations.menu_title_ninja,
-                        icon: <i className='fas fa-icons' />,
-                        href: `${addonPrefixDashboard()}#/icons`,
-                      }
+                        text: this.translations.menu_text_import,
+                        icon: <i className='fas fa-cloud-upload-alt' />,
+                        href: `${addonPrefixDashboard()}#/import`,
+                      },
+                      {
+                        text: this.translations.menu_text_export,
+                        icon: <i className='fas fa-cloud-download-alt' />,
+                        href: `${addonPrefixDashboard()}#/export`,
+                      },
+                      {
+                        text: this.translations.title_reset,
+                        icon: <i className="fas fa-skull" />,
+                        href: `${addonPrefixDashboard()}#/reset`,
+                      },
+                      {
+                        text: this.translations.menu_text_security_settings,
+                        icon: <i className='fas fa-cog' />,
+                        href: `${addonPrefixDashboard()}#/security-settings`,
+                      },
+                      {
+                        text: this.translations.menu_text_statistic_small,
+                        icon: <i className='fas fa-chart-bar' />,
+                        href: `${addonPrefixDashboard()}#/statistic`,
+                      },
                     ]
                   }
                 />
@@ -289,7 +282,6 @@ class App extends Component {
                 <Route exact path="/error-messages-learn-more" component={ErrorMessagesLearnMore} />
                 <Route exact path="/export" component={Export} />
                 <Route exact path="/import" component={Import} />
-                <Route exact path="/icons" component={AppIcon} />
                 <Route exact path="/reset" component={Reset} />
                 <Route exact path="/blocker" component={Blocker} />
               </Switch>

@@ -5,7 +5,7 @@ const ENTRY_DASHBOARD = {
     out: path.resolve(__dirname, './Distribution/Dashboard/')
 };
 
-const version = '5.0.3';
+const version = '5.0.4';
 
 const config = {
     mode: 'production',

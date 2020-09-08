@@ -139,11 +139,7 @@ let GLOBAL_BLACKLIST_URL_TRACKER = [
   /**
    * Fingerprints
    */
-  'https://a-ssl.ligatus.com'
-];
-
-let GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE = [
-  'http://xml.onwardclick.com/',
+  'https://a-ssl.ligatus.com',
   '100hot.com',
   '207.net',
   '207.txt',
@@ -227,11 +223,6 @@ let GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE = [
   'cometcursors.net',
   'commission-junction.com',
   'commission-junction.net',
-  // 'connect.facebook.net',
-  // 'connect.facebook.net/de_DE/all.js',
-  // 'connect.facebook.net/en_EN/all.js',
-  // 'connect.facebook.net/en_US/all.js',
-  // 'connect.facebook.net/pl_PL/all.js',
   'coolweb.com',
   'coolweb.net',
   'coolwebsearch.com',
@@ -613,8 +604,6 @@ let GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE = [
   'https://static.doubleclick.net',
   'https://static.etracker.com/code/e.js',
   'https://syndication.twitter.com/settings',
-  'https://tvpgapl.hit.gemius.pl/pp_gemius.js',
-  'https://tvpgapl.hit.gemius.pl/xgemius.js',
   'https://www.100hot.com',
   'https://www.207.net',
   'https://www.207.txt',
@@ -965,7 +954,6 @@ let GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE = [
   'paycounter.com',
   'paypopup.com',
   'permedia.com',
-  'platform.twitter.com/widgets.js',
   'pointroll.com',
   'popupsponser.com',
   'popuptraffic.com',
@@ -1387,6 +1375,7 @@ let GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE = [
   'xupiter.com',
   'xxxcounter.com',
   'xxxtoolbar.com',
+  'http://xml.onwardclick.com/',
 ];
 
 let GLOBAL_BLACKLIST_URL_BLOCKER = [
@@ -19930,7 +19919,6 @@ const ADVANCED_BLACKLIST_DOMAINS = [
   'LRpolice.com',
   'lrytasadlt.hit.gemius.pl',
   'lrytaslt.adocean.pl',
-  'ls.hit.gemius.pl',
   'lsassoc.com',
   'lse.uk.intellitxt.com',
   'LSpolice.com',
@@ -36523,7 +36511,7 @@ const mapping = {
     defaultValue: [...GLOBAL_BLACKLIST_URL_INCLUDES, ...GLOBAL_LIST_BLACKLIST_PORN],
   },
   blacklistedElementsTrackers: {
-    defaultValue: [...GLOBAL_BLACKLIST_URL_TRACKER, ...GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE, ...GLOBAL_BLACKLIST_URL_BLOCKER ]
+    defaultValue: [...GLOBAL_BLACKLIST_URL_TRACKER, ...GLOBAL_BLACKLIST_URL_BLOCKER ]
   },
   blacklistedElementsCookies: {
     defaultValue: DEFAULT_COOKIE_BLACKLIST,
@@ -37257,7 +37245,7 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
       let listToReturn = [];
 
       if ('blacklistedElementsDomians' == request.listname) {
-        listToReturn = [...GLOBAL_BLACKLIST_URL_BLOCKER, ...GLOBAL_LIST_URL_BLOCKER_NOT_VISIBLE, ...GLOBAL_LIST_BLACKLIST];
+        listToReturn = [...GLOBAL_BLACKLIST_URL_BLOCKER, ...GLOBAL_LIST_BLACKLIST];
       }
 
       if ('blacklistedElementsUrlsIncludes' == request.listname) {

@@ -1,4 +1,4 @@
-const version = '5.0.3';
+const version = '5.0.4';
 
 const appName = 'Protector';
 
