@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Protector",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "description": "Protector",
   "browser_action": {
     "browser_style": true,

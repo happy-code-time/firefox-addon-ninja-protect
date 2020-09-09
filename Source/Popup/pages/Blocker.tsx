@@ -112,11 +112,11 @@ class Blocker extends React.Component {
             <div className="ContentBody">
                 <div className="Ninja Reset">
                     <img alt="image" src={`${addonRoot()}logo/shield-128.png`} />
-                    <p>
+                    {/* <p>
                         {
                             `${this.translations.currntlyIs} ${htmlBlockerIsActive ? this.translations.currntlyIsOn : this.translations.currntlyIsOff}`
                         }
-                    </p>
+                    </p> */}
                     <h1 className="ff-title" onClick={() => this.htmlBlocker()}>
                         {
                             this.translations.blocker_msg_7

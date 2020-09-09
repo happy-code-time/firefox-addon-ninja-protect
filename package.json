@@ -1,6 +1,6 @@
 {
   "name": "protectorninja",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "description": "Protector",
   "scripts": {
     "compile": "./node_modules/.bin/gulp compile",
@@ -46,7 +46,7 @@
     "gulp": "^4.0.2",
     "gulp-babel": "^7.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-imagemin": "^5.0.6",
+    "gulp-imagemin": "^5.0.7",
     "gulp-minify-css": "^1.2.4",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",

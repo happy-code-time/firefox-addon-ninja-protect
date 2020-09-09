@@ -240,14 +240,14 @@ class Security extends React.Component<WebsiteContainerProps> {
         this.setState({ booleanStorageMappingJsx });
     }
 
-    reloadTarget(event: any) {
-        event.preventDefault();
+    // reloadTarget(event: any) {
+    //     event.preventDefault();
 
-        //@ts-ignore
-        browser.runtime.sendMessage({
-            action: 'reload-target'
-        });
-    }
+    //     //@ts-ignore
+    //     browser.runtime.sendMessage({
+    //         action: 'reload-target'
+    //     });
+    // }
 
     render(): JSX.Element {
         const { animationLoading } = this.state;
@@ -270,7 +270,7 @@ class Security extends React.Component<WebsiteContainerProps> {
                     {
                         this.state.booleanStorageMappingJsx
                     }
-                    <div className="links">
+                    {/* <div className="links">
                         <a
                             className="dashboard-link"
                             onClick={(e) => this.reloadTarget(e)}
@@ -279,7 +279,7 @@ class Security extends React.Component<WebsiteContainerProps> {
                                 this.translations.popup_reload_target
                             }
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

@@ -8904,7 +8904,6 @@ const GLOBAL_BLACKLIST_URL_INCLUDES = [
   'adnetworkperformance.com/script',
   'superfastcdn.com/script/firefox.js',
   'jwpltx.com/v1/jwplayer6/ping.gif',
-  'imasdk.googleapis.com/js/core/',
   'static.cloudflareinsights.com/beacon.min.js',
   'https://appinfo.toptal.com/grab',
   'appinfo.toptal.com/grab',

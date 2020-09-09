@@ -5,7 +5,7 @@ const ENTRY_DASHBOARD = {
     out: path.resolve(__dirname, './Distribution/DangerUrl/')
 };
 
-const version = '5.0.6';
+const version = '5.0.7';
 
 const config = {
     mode: 'production',
